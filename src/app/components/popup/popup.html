@@ -1,0 +1,12 @@
+@if(data.isTrue == 'true'){
+<div>
+    <h2 mat-dialog-title [ngClass]="{'success-title': data.title === 'Success', 'error-title': data.title === 'Error'}">
+        {{data.title}}</h2>
+    <mat-dialog-content>
+        <p class="mt-3">{{data.message}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button matButton class="full-width custom-login-btn" (click)="close()">OK</button>
+    </mat-dialog-actions>
+</div>
+}

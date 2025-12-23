@@ -1,8 +1,6 @@
 .icon-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: -80px;
-    /* pulls icon over the box */
     position: relative;
     z-index: 10;
 }
@@ -21,11 +19,22 @@
     /* center icon */
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    /* center horizontally */
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.user-icon1 {
+    width: 70px;
+    /* circle width */
+    height: 70px;
+    /* circle height */
+    font-size: 70px;
+    /* icon size */
+    color: #dc3545;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
 
 .signup-container {
     /* margin-top: 200px; */
@@ -37,6 +46,7 @@
     border-radius: 15px;
     overflow: hidden;
     margin: auto;
+    animation: fadeIn 0.9s ease-in-out;
 }
 
 .left-side {
@@ -65,6 +75,21 @@
     width: 100%;
 }
 
+.icon-wrapper {
+    display: none;
+    /* hide by default (desktop) */
+}
+.custom-login-btn {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-size: larger;
+}
+.custom-login-btn:hover {
+  background-color: #b70000 !important;
+  color: #ffffff !important;
+}
+
 @media (max-width: 768px) {
     .signup-container {
         flex-direction: column;
@@ -73,14 +98,20 @@
 
     }
 
-    h2 {
-        margin-top: 20px;
+    .user-icon1 {
+        display: none;
+        /* hide the left-side icon on mobile */
     }
 
     .icon-wrapper {
         margin-bottom: -70px;
+        display: flex;
+        justify-content: center;
+        /* margin-bottom: 20px; */
     }
 }
+
+
 
 .bottom-text {
     text-align: center;
@@ -94,6 +125,11 @@
     text-decoration: none;
     font-weight: 600;
 }
-.bottom-text a :hover{
+
+.bottom-text a :hover {
     text-decoration: none
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

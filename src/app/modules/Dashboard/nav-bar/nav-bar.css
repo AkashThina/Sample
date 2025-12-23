@@ -1,0 +1,13 @@
+.navbar {
+  .nav-link {
+    transition: 0.3s;
+    &:hover {
+      color: #ffc107 !important;
+    }
+  }
+
+  .active {
+    font-weight: bold;
+    color: #ffc107 !important;
+  }
+}

@@ -4,12 +4,12 @@
         <h2 class="title">Welcome Back 👋</h2>
         <p class="subtitle">Login to continue</p>
 
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm">
 
             <!-- EMAIL -->
-            <mat-form-field class="example-full-width">
+            <mat-form-field appearance="outline" class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email">
+                <input matInput formControlName="email" autocomplete="off">
 
                 @let email = loginForm.get('email');
 
@@ -23,26 +23,29 @@
             </mat-form-field>
 
             <!-- PASSWORD -->
-            <mat-form-field class="example-full-width">
+            <mat-form-field appearance="outline" class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password">
+                <input matInput autocomplete="off" [type]="hide() ? 'password' : 'text'" formControlName="password" />
+                @let password = loginForm.get('password');
 
-                @let pwd = loginForm.get('password');
-
-                @if (pwd?.hasError('required')) {
-                <mat-error class="text-danger">Password is <strong>required</strong></mat-error>
+                @if (password?.hasError('password')) {
+                <mat-error class="text-danger">password is <strong>required</strong></mat-error>
                 }
+                <button matIconButton type="button" matSuffix (click)="clickEvent($event)"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
 
             <div class="text-center">
-                <button type="submit" mat-raised-button color="accent">Log In</button>
+                <button type="submit" class="w-100 custom-login-btn" matButton (click)="onSubmit()">Log In</button>
             </div>
 
         </form>
 
         <div class="bottom-text">
             Forgot your password?
-            <a href="#">Reset here</a>
+            <a routerLink="/resetPassword">Reset here</a>
         </div>
         <div class="bottom-text">
             Don't have an account?

@@ -1,0 +1,30 @@
+.success-title {
+    color: white;
+    background-color: rgb(108, 225, 108);
+}
+
+p {
+    /* font-size: 19px; */
+    font-weight: 700;
+    /* margin-bottom: 5px; */
+    color: #00000086 !important;
+}
+
+.error-title {
+    background-color: #b70000;
+    color: white;
+}
+
+.custom-login-btn {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+    border-radius: 5px;
+    /* font-size: larger; */
+    border-color: rgb(197, 197, 197);
+
+}
+
+.custom-login-btn:hover {
+    background-color: #b70000 !important;
+    color: #ffffff !important;
+}
