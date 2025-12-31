@@ -53,58 +53,61 @@ export class Login implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
+    else {
+      this.router.navigate(['/home']);
+    }
 
-    this.loader.show();
+  //   this.loader.show();
 
-    const payload = {
-      email: this.loginForm.get('email')?.value,
-      password: this.loginForm.get('password')?.value
-    };
-    this.rest.post(Apiendpoints.login, payload).subscribe({
-      next: (res: any) => {
-        if (res.rcode == 200) {
-          // setTimeout(() => {
-            this.response = res;
+  //   const payload = {
+  //     email: this.loginForm.get('email')?.value,
+  //     password: this.loginForm.get('password')?.value
+  //   };
+  //   this.rest.post(Apiendpoints.login, payload).subscribe({
+  //     next: (res: any) => {
+  //       if (res.rcode == 200) {
+  //         // setTimeout(() => {
+  //         this.response = res;
 
-            const dialogRef = this.dialog.open(Popup, {
-              width: '300px',
-              data: { isTrue: 'true', title: 'Success', message: 'Login Successful!' }
-            });
+  //         const dialogRef = this.dialog.open(Popup, {
+  //           width: '300px',
+  //           data: { isTrue: 'true', title: 'Success', message: 'Login Successful!' }
+  //         });
 
-            dialogRef.afterClosed().subscribe(() => {
-              localStorage.setItem('Token', res.token);
-              this.router.navigate(['/home']);
-            });
-            this.loader.hide();
-          // }, 2000);
-        }else{
-          this.loader.hide();
-          console.log("NO Response");
-          
-        }
+  //         dialogRef.afterClosed().subscribe(() => {
+  //           localStorage.setItem('Token', res.token);
 
+  //         });
+  //         this.loader.hide();
+  //         // }, 2000);
+  //       } else {
+  //         this.loader.hide();
+  //         console.log("NO Response");
 
-
-
-        // Assuming backend returns { token: "xxxxxx" }
+  //       }
 
 
 
-      },
 
-      error: (err: any) => {
-        this.loader.hide();
+  //       // Assuming backend returns { token: "xxxxxx" }
 
-        const dialogRef = this.dialog.open(Popup, {
-          width: '300px',
-          data: { isTrue: 'false', title: 'Error', message: 'Invalid Email or Password' }
-        });
 
-        dialogRef.afterClosed().subscribe(() => {
-          this.router.navigate(['/login']);
-        });
-      }
-    });
+
+  //     },
+
+  //     error: (err: any) => {
+  //       this.loader.hide();
+
+  //       const dialogRef = this.dialog.open(Popup, {
+  //         width: '300px',
+  //         data: { isTrue: 'false', title: 'Error', message: 'Invalid Email or Password' }
+  //       });
+
+  //       dialogRef.afterClosed().subscribe(() => {
+  //         this.router.navigate(['/login']);
+  //       });
+  //     }
+  //   });
   }
 
 
